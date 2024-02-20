@@ -1,0 +1,9 @@
+<div>
+    <p>{{ total }}</p>
+</div>
+<div>
+    <button [disabled]="total <= 0" 
+            (click)="diminuer()">-</button>
+    <button [disabled]="total >= 9"
+            (click)="augmenter()">+</button>
+</div>

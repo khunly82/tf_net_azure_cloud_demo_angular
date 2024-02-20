@@ -1,0 +1,26 @@
+<p-card>
+    <h1>{{ ms | timer }}</h1>
+    <ng-template pTemplate="footer">
+        <div [ngStyle]="{ display: 'flex', gap: '20px' }">
+            <p-button severity="success" 
+                      label="Start"
+                      icon="pi pi-play"
+                      iconPos="right"
+                      (onClick)="start()"
+                      [disabled]="!!id"></p-button>
+            <p-button severity="danger" 
+                      label="Stop"
+                      icon="pi pi-stop"
+                      iconPos="right"
+                      (onClick)="stop()"
+                      [disabled]="!id"
+                      ></p-button>
+            <p-button severity="info" 
+                      label="Reset"
+                      icon="pi pi-refresh"
+                      iconPos="right"
+                      (onClick)="reset()"
+                      [disabled]="ms === 0"></p-button>
+        </div>
+    </ng-template>
+</p-card>

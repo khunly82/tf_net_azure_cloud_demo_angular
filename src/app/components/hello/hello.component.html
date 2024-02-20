@@ -1,0 +1,51 @@
+<!-- afficher une variable {{  }} -->
+<!-- <p>Hello ♥prenom♥ !!</p> -->
+<p>Hello {{ prenom }} </p>
+<p>Afficher en majuscule {{ prenom | uppercase }} </p>
+<p>Afficher en minuscule {{ prenom | lowercase }} </p>
+<p>Afficher avec la première lettre en maj {{ prenom | titlecase }} </p>
+
+<hr>
+
+<!-- 'x.y-z' 
+    x -> nombre minimal d'unités 
+    y -> nombre mininal de décimales
+    z -> nombre maximal de décimales
+-->
+<p>Nombre sur 4 charactères {{ age | number : '4.2-3' }}</p>
+<hr>
+<p>afficher une date {{ date_naissance }}</p>
+<p>afficher une date formatée {{ date_naissance | date : 'dd/MM/yyyy' }}</p>
+<p>afficher une date formatée 
+    {{ date_naissance | date : 'dd MMMM yyyy' }}
+</p>
+
+<hr>
+<p>Afficher un booleen {{ estAdmin ? 'Admin' : 'Client' }}</p>
+
+@if(estAdmin) {
+    <p>Paragraghe réservé aux admins</p>
+} @else {
+    <p>Paragraghe réservé aux clients</p>
+}
+
+<p>Ancienne syntaxe</p>
+<p *ngIf="estAdmin; else otherTemplate">Paragraphe réservé aux admins</p>
+<ng-template #otherTemplate>
+    <p>autre paragraphe</p>
+</ng-template>
+
+<ul>
+    <li 
+        *ngFor="let item of ingredients; 
+        let i = index"
+        [ngStyle]="{ color: i % 2 === 0 ? 'red': 'green' }"
+        [ngClass]="{ pair: i % 2 === 0 }">
+        {{ item }} (index:  {{i} })
+    </li>
+</ul>
+<ul>
+    @for (item of ingredients; track $index) {
+        <li>{{item}} {{$index}}</li>
+    }    
+</ul>
